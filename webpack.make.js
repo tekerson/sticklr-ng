@@ -17,7 +17,7 @@ module.exports = function (options) {
         inject: 'body'
       }),
       new ExtractText('[name].[hash].css', {
-        disable: !BUILD
+        disable: BUILD
       })
     ],
 
@@ -53,6 +53,10 @@ module.exports = function (options) {
           test: /\.js$/,
           exclude: vendorModules,
           loader: 'babel-loader'
+        },
+        {
+          test: /\.html\.ng$/,
+          loader: 'raw'
         },
         {
           test: /\.html$/,

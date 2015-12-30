@@ -6,4 +6,6 @@ import 'angular-material';
 
 import 'angular-material/angular-material.min.css';
 
-ng.module('App', ['ngMaterial']);
+import 'sticklr/components';
+
+ng.module('App', ['ngMaterial', 'stkComponents']);
