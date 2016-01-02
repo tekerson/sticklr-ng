@@ -6,26 +6,32 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
   </head>
   <body ng-controller="AppCtrl as vm">
-    <h1 class="heading-page">Sticklr</h1>
-    <section class="photo-area">
-      <h2>Photo</h2>
+    <header class="app-header">
+      <h1>Sticklr</h1>
+    </header>
+    <section class="app-content">
+      <section class="photo-area">
+        <h2>Photo</h2>
 
-      <stk-file-input
-          ng-if="!vm.currentPhoto()"
-          on-file-loaded="vm.preview(dataURI);">
-        Select Photo
-      </stk-file-input>
-      <button
-          class="stk-restart"
-          ng-if="vm.currentPhoto()"
-          ng-click="vm.restart()">
-        Restart
-      </button>
+        <stk-file-input
+            ng-if="!vm.currentPhoto()"
+            on-file-loaded="vm.preview(dataURI);">
+          Select Photo
+        </stk-file-input>
+        <button
+            class="stk-restart"
+            ng-if="vm.currentPhoto()"
+            ng-click="vm.restart()">
+          Restart
+        </button>
 
-      <stk-photo src="{{vm.currentPhoto() || ''}}"></stk-photo>
-    </section>
-    <section class="sticker-library">
-      <h2>Stickers</h2>
+        <stk-photo src="{{vm.currentPhoto() || ''}}"></stk-photo>
+      </section>
+
+      <section class="sticker-library">
+        <h2>Stickers</h2>
+      </section>
+
     </section>
   </body>
 </html>

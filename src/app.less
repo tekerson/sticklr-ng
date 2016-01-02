@@ -1,18 +1,12 @@
-@import (reference) '~variables';
-
-@import (reference) '~bootstrap/less/mixins/grid';
 @import (reference) '~bootstrap/less/bootstrap';
 
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important;
-}
-
 body {
-  .make-row();
+  .container;
 }
 
-.heading-page {
-  .make-xs-column(12);
+.app-header,
+.app-content {
+  .make-row();
 }
 
 .photo-area {
