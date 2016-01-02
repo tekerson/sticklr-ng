@@ -1,0 +1,11 @@
+<ul class="stk-media-list"
+    ng-repeat="medium in media">
+  <li class="stk-media-list--medium">
+    <img
+        class="stk-media-list--image"
+        ng-src="{{medium}}">
+    <span class="stk-media-list--title">
+      Item #{{$index + 1}}
+    </span>
+  </li>
+</ul>
