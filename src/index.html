@@ -5,15 +5,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
   </head>
-  <body ng-app="App" layout="row">
-    <md-content flex>
-      <h1>MAIN</h1>
-      <stk-file-input></stk-file-input>
-    </md-content>
-    <md-sidenav flex="20" md-is-locked-open="$mdMedia('gt-md')">
-      <md-toolbar>
-        <h1 class="md-toolbar-tools">NAV</h1>
-      </md-toolbar>
-    </md-sidenav>
+  <body ng-controller="AppCtrl as vm">
+    <h1 class="heading-page">Sticklr</h1>
+    <section class="photo-area">
+      <h2>Photo</h2>
+
+      <stk-file-input
+          ng-if="!vm.currentPhoto()"
+          on-file-loaded="vm.preview(dataURI);">
+        Select Photo
+      </stk-file-input>
+      <button
+          class="stk-restart"
+          ng-if="vm.currentPhoto()"
+          ng-click="vm.restart()">
+        Restart
+      </button>
+
+      <stk-photo src="{{vm.currentPhoto() || ''}}"></stk-photo>
+    </section>
+    <section class="sticker-library">
+      <h2>Stickers</h2>
+    </section>
   </body>
 </html>

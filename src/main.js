@@ -1,11 +1,8 @@
-import ng from 'angular';
+import angular from 'angular';
 
-import 'angular-animate';
-import 'angular-aria';
-import 'angular-material';
+import 'bootstrap/less/bootstrap.less';
 
-import 'angular-material/angular-material.min.css';
+import './app.js';
+import './index.html';
 
-import 'sticklr/components';
-
-ng.module('App', ['ngMaterial', 'stkComponents']);
+angular.bootstrap(document, ['App']);

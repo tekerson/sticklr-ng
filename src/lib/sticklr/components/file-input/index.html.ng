@@ -1,3 +1,0 @@
-<md-button class="md-raised md-primary" aria-label="attach_file" ng-click="vm.select()">
-  Choose file
-</md-button>

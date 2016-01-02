@@ -1,5 +1,5 @@
+const webpack = require('webpack');
 const Html = require('html-webpack-plugin');
-const CommonsChunk = require('webpack/lib/optimize/CommonsChunkPlugin');
 const ExtractText = require('extract-text-webpack-plugin');
 
 const vendorModules = /node_modules/;
@@ -11,22 +11,21 @@ module.exports = function (options) {
   return {
     context: __dirname,
     plugins: [
-      new CommonsChunk('vendors', 'vendors.bundle.js'),
+      new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
       new Html({
         template: './src/index.html',
         inject: 'body'
       }),
       new ExtractText('[name].[hash].css', {
-        disable: BUILD
+        disable: !BUILD
       })
     ],
 
     entry: {
-      main: [
-        './src/index.html',
-        './src/main.js'
-      ],
-      vendors: ['angular', 'angular-material']
+      main: './src/main.js',
+      vendor: [
+        'angular'
+      ]
     },
 
     output: {
@@ -37,16 +36,16 @@ module.exports = function (options) {
 
     resolve: {
       modulesDirectories: ['src/lib', 'node_modules'],
-      extensions: ['', '.js']
+      extensions: ['', '.js'],
+      alias: {
+        'angular': BUILD ? 'angular/angular.min.js' : 'angular/angular.js',
+        'theme.less': 'bootstrap/less/theme.less',
+        'variables.less': 'bootstrap/less/variables.less'
+      }
     },
 
     module: {
       preLoaders: [
-        {
-          test: /\.js$/,
-          exclude: vendorModules,
-          loader: 'eslint-loader'
-        }
       ],
       loaders: [
         {
@@ -55,17 +54,35 @@ module.exports = function (options) {
           loader: 'babel-loader'
         },
         {
-          test: /\.html\.ng$/,
-          loader: 'raw'
+          test: /\.html$/,
+          loader: 'html'
         },
         {
-          test: /\.html$/,
+          test: /$index\.html$/,
           loader: 'file?name=[name].[ext]'
         },
         {
           test: /\.css$/,
           loader: ExtractText.extract('style', 'css?sourceMap')
-        }
+        },
+        {
+          test: /\.less$/,
+          loader: ExtractText.extract('style', 'css!less?sourceMap')
+        },
+
+        { test: /\.(woff|woff2)$/,  loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+        { test: /\.ttf$/,    loader: "file-loader" },
+        { test: /\.eot$/,    loader: "file-loader" },
+        { test: /\.svg$/,    loader: "file-loader" },
+
+        {
+          test: /\.js$/,
+          exclude: vendorModules,
+          loader: 'eslint-loader'
+        },
+
+        { test: /angular\.js$/, loader: 'exports?angular' },
+        { test: /angular\.min\.js$/, loader: 'exports?angular' }
       ]
     },
 
