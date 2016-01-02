@@ -7,7 +7,7 @@
   </head>
   <body ng-controller="AppCtrl as vm">
     <header class="app-header">
-      <h1>Sticklr</h1>
+      <h1 class="app-header-title">Sticklr</h1>
     </header>
     <section class="app-content">
       <section class="photo-area">
@@ -30,6 +30,22 @@
 
       <section class="sticker-library">
         <h2>Stickers</h2>
+        <stk-file-input
+            on-file-loaded="vm.addSticker(dataURI);">
+          Add Sticker
+        </stk-file-input>
+        <ul
+            class="stk-library-list"
+            ng-repeat="sticker in vm.allStickers()">
+          <li class="stk-sticker">
+            <img
+                class="stk-library-sticker-image"
+                ng-src="{{sticker}}">
+            <span class="stk-library-sticker-title">
+              Image #{{$index + 1}}
+            </span>
+          </li>
+        </ul>
       </section>
 
     </section>

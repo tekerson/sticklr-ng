@@ -38,9 +38,7 @@ module.exports = function (options) {
       modulesDirectories: ['src/lib', 'node_modules'],
       extensions: ['', '.js'],
       alias: {
-        'angular': BUILD ? 'angular/angular.min.js' : 'angular/angular.js',
-        'theme.less': 'bootstrap/less/theme.less',
-        'variables.less': 'bootstrap/less/variables.less'
+        'angular': BUILD ? 'angular/angular.min.js' : 'angular/angular.js'
       }
     },
 
