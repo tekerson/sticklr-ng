@@ -1,32 +1,23 @@
 @import (reference) '~bootstrap/less/bootstrap';
 
 body {
-  .container;
+  .container-fluid;
 }
 
-.app-header,
 .app-content {
   .make-row();
-}
 
-.app-header {
-  .navbar;
-  .navbar-default;
-  .navbar-header;
-}
+  .photo-area {
+    .make-xs-column(8);
+    // text-align: center;
+    background-color: blue;
+  }
 
-.app-header-title {
-  .navbar-brand;
-}
-
-.photo-area {
-  .make-xs-column(8);
-  text-align: center;
-}
-
-.sticker-library {
-  .make-xs-column(4);
-  text-align: center;
+  .sticker-library {
+    .make-xs-column(4);
+    // text-align: center;
+    background-color: red;
+  }
 }
 
 .stk-restart {
