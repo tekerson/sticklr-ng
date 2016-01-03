@@ -31,7 +31,11 @@
             on-file-loaded="vm.addSticker(dataURI);">
           Add Sticker
         </stk-file-input>
-        <stk-media-list media="vm.allStickers()"></stk-media-list>
+        <stk-media-list
+            media="vm.allStickers()"
+            thumb-src="medium"
+            title="'Sticker #' + ($index + 1)">
+        </stk-media-list>
       </section>
 
     </section>

@@ -3,9 +3,10 @@
   <li class="stk-media-list--medium">
     <img
         class="stk-media-list--image"
-        ng-src="{{medium}}">
-    <span class="stk-media-list--title">
-      Item #{{$index + 1}}
+        ng-src="{{thumbSrcFrom(this)}}">
+    <span
+        class="stk-media-list--title"
+        ng-bind="titleFrom(this)">
     </span>
   </li>
 </ul>
