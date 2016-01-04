@@ -8,30 +8,27 @@
   <body ng-controller="AppCtrl as vm">
     <section class="app-content">
       <section class="photo-area">
-        <h2>Photo</h2>
-
         <stk-file-input
-            ng-if="!vm.currentPhoto()"
+            ng-if="!vm.photo"
             on-file-loaded="vm.preview(dataURI);">
           Select Photo
         </stk-file-input>
         <button
             class="stk-restart"
-            ng-if="vm.currentPhoto()"
-            ng-click="vm.restart()">
+            ng-if="vm.photo"
+            ng-click="vm.reset()">
           Restart
         </button>
 
-        <stk-photo src="{{vm.currentPhoto() || ''}}"></stk-photo>
+        <stk-photo src="{{vm.photo}}"></stk-photo>
       </section>
 
       <section class="sticker-library">
-        <h2>Stickers</h2>
         <stk-sticker-upload-form
             on-sticker-created="vm.addSticker(sticker)">
         </stk-sticker-upload-form>
         <stk-media-list
-            media="vm.allStickers()"
+            media="vm.stickers"
             thumb-src="medium.dataURI"
             title="medium.title">
         </stk-media-list>

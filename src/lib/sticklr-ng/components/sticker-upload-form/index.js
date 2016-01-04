@@ -3,26 +3,24 @@
 import template from './template.html';
 import './style.less';
 
-export default function ($sce) {
-  return ({
-    restrict: 'E',
-    scope: {
-      stickerCreated: '&?onStickerCreated'
-    },
+export default () => ({
+  restrict: 'E',
+  scope: {
+    stickerCreated: '&?onStickerCreated'
+  },
 
-    controller: Ctrl,
-    controllerAs: 'vm',
+  controller: Ctrl,
+  controllerAs: 'vm',
 
-    link,
-    template
-  });
-};
+  link,
+  template
+});
 
-const link = (scope, element, attrs, ctrl) => {
+function link (scope, element, attrs, ctrl) {
   if (scope.stickerCreated) {
     ctrl.onSave((sticker) => scope.stickerCreated({sticker}));
   }
-};
+}
 
 function Ctrl () {
   let isOpen = false;
@@ -70,14 +68,16 @@ function Ctrl () {
   function reset () {
     sticker = newSticker();
   }
-};
+}
 
-const newSticker = () => ({
-  title: '',
-  dataURI: undefined
-});
+function newSticker () {
+  return ({
+    title: '',
+    dataURI: undefined
+  });
+}
 
-const isValid = (sticker) => {
+function isValid (sticker) {
   if (sticker.dataURI == null) {
     return false;
   }
@@ -85,4 +85,4 @@ const isValid = (sticker) => {
     return false;
   }
   return true;
-};
+}

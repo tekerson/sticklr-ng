@@ -4,31 +4,32 @@ import './app.less';
 
 import 'sticklr-ng/components';
 
-let photo;
-let stickers = [];
-
 export default angular.module('App', ['stkComponents'])
-  .controller('AppCtrl', ($scope) => ({
+  .controller('AppCtrl', Ctrl);
+
+function Ctrl () {
+  let photo = null;
+  let stickers = [];
+
+  return ({
+    get photo () { return photo; },
+    get stickers () { return stickers; },
+
     preview,
-    currentPhoto,
-    restart,
+    reset,
 
-    addSticker,
-    allStickers
-  }));
+    addSticker
+  });
 
-const preview = (dataURI) => {
-  photo = dataURI;
-};
+  function preview (dataURI) {
+    photo = dataURI;
+  }
 
-const currentPhoto = () => photo;
+  function reset () {
+    photo = null;
+  }
 
-const restart = () => {
-  photo = undefined;
-};
-
-const addSticker = (sticker) => {
-  stickers = [...stickers, sticker];
-};
-
-const allStickers = () => stickers;
+  function addSticker (sticker) {
+    stickers = [...stickers, sticker];
+  }
+}
