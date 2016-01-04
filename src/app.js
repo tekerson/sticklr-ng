@@ -27,8 +27,8 @@ const restart = () => {
   photo = undefined;
 };
 
-const addSticker = (dataURI) => {
-  stickers = [...stickers, dataURI];
+const addSticker = (sticker) => {
+  stickers = [...stickers, sticker];
 };
 
 const allStickers = () => stickers;

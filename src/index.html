@@ -27,14 +27,13 @@
 
       <section class="sticker-library">
         <h2>Stickers</h2>
-        <stk-file-input
-            on-file-loaded="vm.addSticker(dataURI);">
-          Add Sticker
-        </stk-file-input>
+        <stk-sticker-upload-form
+            on-sticker-created="vm.addSticker(sticker)">
+        </stk-sticker-upload-form>
         <stk-media-list
             media="vm.allStickers()"
-            thumb-src="medium"
-            title="'Sticker #' + ($index + 1)">
+            thumb-src="medium.dataURI"
+            title="medium.title">
         </stk-media-list>
       </section>
 
