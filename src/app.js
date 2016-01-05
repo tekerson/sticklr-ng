@@ -5,9 +5,10 @@ import './app.less';
 import 'sticklr-ng/components';
 
 export default angular.module('App', ['stkComponents'])
-  .controller('AppCtrl', Ctrl);
+  .controller('AppCtrl', ['eventEmitter', ctrl])
+  .factory('eventEmitter', ['$rootScope', eventEmitter]);
 
-function Ctrl () {
+function ctrl (events) {
   let photo = null;
   let stickers = [];
 
@@ -16,6 +17,7 @@ function Ctrl () {
     get stickers () { return stickers; },
 
     preview,
+    error,
     reset,
 
     addSticker
@@ -25,6 +27,10 @@ function Ctrl () {
     photo = dataURI;
   }
 
+  function error (msg) {
+    events.emit('ERROR', { msg });
+  }
+
   function reset () {
     photo = null;
   }
@@ -32,4 +38,15 @@ function Ctrl () {
   function addSticker (sticker) {
     stickers = [...stickers, sticker];
   }
+}
+
+function eventEmitter ($rootScope) {
+  return ({
+    emit (type, event) {
+      $rootScope.$emit({
+        _type: type,
+        event
+      });
+    }
+  });
 }

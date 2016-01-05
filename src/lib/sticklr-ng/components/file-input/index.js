@@ -6,7 +6,8 @@ import './style.less';
 export default ($sce) => ({
   restrict: 'E',
   scope: {
-    fileLoaded: '&?onFileLoaded'
+    fileLoaded: '&?onFileLoaded',
+    loadError: '&?onLoadError'
   },
   transclude: true,
 
@@ -18,20 +19,23 @@ function link ($sce) {
   return (scope, element, attrs, ctrl) => {
     const fileInput = element[0];
 
-    const fileLoaded = scope.fileLoaded
-            ? (dataURI) => scope.fileLoaded({dataURI})
-            : () => {};
+    const nop = () => {};
+
+    const fileLoaded = !scope.fileLoaded ? nop
+            : (dataURI) => {
+              scope.$apply(scope.fileLoaded({
+                dataURI: $sce.trustAsResourceUrl(dataURI)
+              }));
+            };
+
+    const loadError = !scope.loadError ? nop
+            : (msg) => { scope.$apply(scope.loadError({msg})); };
 
     fileInput.addEventListener('change', (ev) => {
       readFile(ev.target.files)
-        .then(dataURI => scope.$apply(fileLoaded($sce.trustAsResourceUrl(dataURI))))
-        .catch(fileLoadError);
+        .then(fileLoaded)
+        .catch(loadError);
     });
-
-    function fileLoadError (err) {
-      // FIXME handle error
-      console.error(err);
-    }
   };
 }
 

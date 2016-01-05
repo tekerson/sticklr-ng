@@ -10,7 +10,8 @@
       <section class="photo-area">
         <stk-file-input
             ng-if="!vm.photo"
-            on-file-loaded="vm.preview(dataURI);">
+            on-file-loaded="vm.preview(dataURI)"
+            on-load-error="vm.error(msg)">
           Select Photo
         </stk-file-input>
         <button
