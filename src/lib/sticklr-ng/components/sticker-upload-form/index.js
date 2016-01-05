@@ -3,6 +3,8 @@
 import template from './template.html';
 import './style.less';
 
+import Sticker from 'sticklr/sticker';
+
 export default () => ({
   restrict: 'E',
   scope: {
@@ -52,7 +54,7 @@ function Ctrl () {
     if (!isValid(sticker)) {
       return;
     }
-    stickerCreated(sticker);
+    stickerCreated(Sticker(sticker));
     close();
     reset();
   }
