@@ -4,40 +4,26 @@ import './app.less';
 
 import 'sticklr-ng/components';
 
+import stickerAlbum from 'sticklr/sticker-album';
+import photoFrame from 'sticklr/photo-frame';
+
 export default angular.module('App', ['stkComponents'])
-  .controller('AppCtrl', ['eventEmitter', ctrl])
-  .factory('eventEmitter', ['$rootScope', eventEmitter]);
+  .controller('AppCtrl', ['photoFrame', 'stickerAlbum', 'eventEmitter', ctrl])
+  .factory('eventEmitter', ['$rootScope', eventEmitter])
+  .factory('stickerAlbum', [stickerAlbum])
+  .factory('photoFrame', [photoFrame]);
 
-function ctrl (events) {
-  let photo = null;
-  let stickers = [];
-
+function ctrl (photoFrame, stickerAlbum, events) {
   return ({
-    get photo () { return photo; },
-    get stickers () { return stickers; },
+    get photo () { return photoFrame.photo(); },
+    get stickers () { return stickerAlbum.stickers(); },
 
-    preview,
-    error,
-    reset,
+    preview: photoFrame.changePhoto,
+    reset: photoFrame.reset,
+    error: events.emit.bind(null, 'ERROR'),
 
-    addSticker
+    addSticker: stickerAlbum.addSticker
   });
-
-  function preview (dataURI) {
-    photo = dataURI;
-  }
-
-  function error (msg) {
-    events.emit('ERROR', { msg });
-  }
-
-  function reset () {
-    photo = null;
-  }
-
-  function addSticker (sticker) {
-    stickers = [...stickers, sticker];
-  }
 }
 
 function eventEmitter ($rootScope) {
