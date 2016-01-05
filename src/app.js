@@ -2,16 +2,11 @@ import angular from 'angular';
 
 import './app.less';
 
-import 'sticklr-ng/components';
+import 'sticklr-ng';
 
-import StickerAlbum from 'sticklr/sticker-album';
-import PhotoFrame from 'sticklr/photo-frame';
-
-export default angular.module('App', ['stkComponents'])
-  .controller('AppCtrl', ['photoFrame', 'stickerAlbum', 'eventEmitter', Ctrl])
-  .factory('eventEmitter', ['$rootScope', EventEmitter])
-  .factory('stickerAlbum', [StickerAlbum])
-  .factory('photoFrame', [PhotoFrame]);
+export default angular.module('App', ['sticklr'])
+  .controller('AppCtrl', ['stkPhotoFrame', 'stkStickerAlbum', 'eventEmitter', Ctrl])
+  .factory('eventEmitter', ['$rootScope', EventEmitter]);
 
 function Ctrl (photo, album, events) {
   return ({
