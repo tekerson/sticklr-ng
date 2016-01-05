@@ -5,16 +5,16 @@ import './app.less';
 import 'sticklr-ng';
 
 export default angular.module('App', ['sticklr'])
-  .controller('AppCtrl', ['stkPhotoFrame', 'stkStickerAlbum', 'eventEmitter', Ctrl])
+  .controller('AppCtrl', ['stkCollage', 'stkStickerAlbum', 'eventEmitter', Ctrl])
   .factory('eventEmitter', ['$rootScope', EventEmitter]);
 
-function Ctrl (photo, album, events) {
+function Ctrl (collage, album, events) {
   return ({
-    get photo () { return photo.photo(); },
+    get photo () { return collage.background(); },
     get stickers () { return album.stickers(); },
 
-    preview: photo.changePhoto,
-    reset: photo.reset,
+    changePhoto: collage.changeBackground,
+    reset: collage.reset,
     error: events.emit.bind(null, 'ERROR'),
 
     addSticker: album.addSticker
