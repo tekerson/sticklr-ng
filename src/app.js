@@ -4,29 +4,29 @@ import './app.less';
 
 import 'sticklr-ng/components';
 
-import stickerAlbum from 'sticklr/sticker-album';
-import photoFrame from 'sticklr/photo-frame';
+import StickerAlbum from 'sticklr/sticker-album';
+import PhotoFrame from 'sticklr/photo-frame';
 
 export default angular.module('App', ['stkComponents'])
-  .controller('AppCtrl', ['photoFrame', 'stickerAlbum', 'eventEmitter', ctrl])
-  .factory('eventEmitter', ['$rootScope', eventEmitter])
-  .factory('stickerAlbum', [stickerAlbum])
-  .factory('photoFrame', [photoFrame]);
+  .controller('AppCtrl', ['photoFrame', 'stickerAlbum', 'eventEmitter', Ctrl])
+  .factory('eventEmitter', ['$rootScope', EventEmitter])
+  .factory('stickerAlbum', [StickerAlbum])
+  .factory('photoFrame', [PhotoFrame]);
 
-function ctrl (photoFrame, stickerAlbum, events) {
+function Ctrl (photo, album, events) {
   return ({
-    get photo () { return photoFrame.photo(); },
-    get stickers () { return stickerAlbum.stickers(); },
+    get photo () { return photo.photo(); },
+    get stickers () { return album.stickers(); },
 
-    preview: photoFrame.changePhoto,
-    reset: photoFrame.reset,
+    preview: photo.changePhoto,
+    reset: photo.reset,
     error: events.emit.bind(null, 'ERROR'),
 
-    addSticker: stickerAlbum.addSticker
+    addSticker: album.addSticker
   });
 }
 
-function eventEmitter ($rootScope) {
+function EventEmitter ($rootScope) {
   return ({
     emit (type, event) {
       $rootScope.$emit({

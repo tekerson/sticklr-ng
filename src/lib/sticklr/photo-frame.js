@@ -1,4 +1,4 @@
-export default function photoFrame () {
+export default function PhotoFrame () {
   let photo = null;
 
   return ({
