@@ -6,9 +6,9 @@ import './style.less';
 export default () => ({
   restrict: 'E',
   scope: {
-    stuckers: '='
+    stuckers: '=',
+    background: '='
   },
-  transclude: true,
 
   template
 });

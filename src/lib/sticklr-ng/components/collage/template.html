@@ -1,7 +1,7 @@
 <div class="stk-collage">
   <img
-      ng-repeat="sticker in stuckers"
-      style="position: absolute; top: {{sticker.location.y}}px; left: {{sticker.location.x}}px"
-      ng-src="{{sticker.sticker}}"></img>
-  <div ng-transclude></div>
+      ng-repeat="stucker in stuckers"
+      style="position: absolute; top: {{stucker.location.y}}px; left: {{stucker.location.x}}px"
+      ng-src="{{stucker.dataURI}}"></img>
+  <img class="stk-photo" ng-src="{{background}}"></img>
 </div>

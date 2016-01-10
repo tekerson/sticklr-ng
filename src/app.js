@@ -13,7 +13,7 @@ function Ctrl (collage, album, events) {
   return ({
     get photo () { return collage.background(); },
     get stickers () { return album.stickers(); },
-    get stuckers () { return collage.stickers(); },
+    get stuckers () { return collage.stuckers(); },
 
     changePhoto: collage.changeBackground,
     reset: collage.reset,

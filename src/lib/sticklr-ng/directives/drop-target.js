@@ -23,8 +23,8 @@ function handleDrop (scope, callback, ev) {
   const image = ev.dataTransfer.getData('image/png');
 
   const location = {
-    x: ev.pageX + ev.target.x - offset.x,
-    y: ev.pageY + ev.target.y - offset.y
+    x: ev.clientX - offset.x,
+    y: ev.clientY - offset.y
   };
 
   scope.$apply(callback(location, image));

@@ -1,8 +1,10 @@
+import Stucker from './stucker';
+
 export default function Collage (photoFrame) {
-  let stickers = [];
+  let stuckers = [];
 
   return ({
-    stickers: () => stickers,
+    stuckers: () => stuckers,
 
     background: photoFrame.photo,
     changeBackground: photoFrame.changePhoto,
@@ -12,10 +14,11 @@ export default function Collage (photoFrame) {
 
   function reset () {
     photoFrame.reset();
-    stickers = [];
+    stuckers = [];
   }
 
-  function stick (location, sticker) {
-    stickers = [...stickers, {location, sticker}];
+  function stick (location, dataURI) {
+    const stucker = Stucker({location, dataURI});
+    stuckers = [...stuckers, stucker];
   }
 }
