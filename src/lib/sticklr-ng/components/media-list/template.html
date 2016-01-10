@@ -1,12 +1,15 @@
 <ul class="stk-media-list"
     ng-repeat="medium in media">
-  <li class="stk-media-list--medium">
-    <img
-        class="stk-media-list--image"
-        ng-src="{{thumbSrcFrom(this)}}">
-    <span
-        class="stk-media-list--title"
-        ng-bind="titleFrom(this)">
-    </span>
+  <li>
+    <div class="stk-media-list--medium" draggable="true">
+      <img
+          class="stk-media-list--image"
+          ng-src="{{thumbSrcFrom(this)}}"
+          stk-draggable="encodeData(medium)">
+      <span
+          class="stk-media-list--title"
+          ng-bind="titleFrom(this)">
+      </span>
+    </div>
   </li>
 </ul>

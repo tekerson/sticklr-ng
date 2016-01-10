@@ -14,6 +14,7 @@
             on-load-error="vm.error(msg)">
           Select Photo
         </stk-file-input>
+
         <button
             class="stk-restart"
             ng-if="vm.photo"
@@ -21,7 +22,14 @@
           Restart
         </button>
 
-        <stk-photo src="{{vm.photo}}"></stk-photo>
+        <stk-collage
+            stuckers="vm.stuckers">
+          <stk-photo
+              src="{{vm.photo}}"
+              stk-drop-target
+              on-drop="vm.stick(location, data)">
+          </stk-photo>
+        </stk-collage>
       </section>
 
       <section class="sticker-library">

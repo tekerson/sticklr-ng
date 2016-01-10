@@ -15,7 +15,7 @@ export default function Collage (photoFrame) {
     stickers = [];
   }
 
-  function stick (sticker) {
-    stickers = [...stickers, sticker];
+  function stick (location, sticker) {
+    stickers = [...stickers, {location, sticker}];
   }
 }

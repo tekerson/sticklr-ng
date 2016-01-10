@@ -6,8 +6,9 @@ import Sticker from 'sticklr/sticker';
 import StickerAlbum from 'sticklr/sticker-album';
 
 import './components';
+import './directives';
 
-export default angular.module('sticklr', ['stkComponents'])
+export default angular.module('sticklr', ['stkComponents', 'stkDirectives'])
   .factory('stkCollage', ['stkPhotoFrame', Collage])
   .factory('stkPhotoFrame', [PhotoFrame])
   .factory('stkStickerAlbum', [StickerAlbum])

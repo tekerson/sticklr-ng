@@ -1,0 +1,7 @@
+<div class="stk-collage">
+  <img
+      ng-repeat="sticker in stuckers"
+      style="position: absolute; top: {{sticker.location.y}}px; left: {{sticker.location.x}}px"
+      ng-src="{{sticker.sticker}}"></img>
+  <div ng-transclude></div>
+</div>
