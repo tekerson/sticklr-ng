@@ -22,3 +22,7 @@ To run in development mode:
 ```shell
 npm start
 ```
+
+## Demo
+
+If you just want to look at the final result you can point your browser at [http://tekerson.github.io/sticklr-ng/](http://tekerson.github.io/sticklr-ng/).
