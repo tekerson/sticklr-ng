@@ -1,20 +1,25 @@
 import Stucker from './stucker';
 
-export default function Collage (photoFrame) {
+export default function Collage () {
   let stuckers = [];
+  let background = null;
 
   return ({
     stuckers: () => stuckers,
+    background: () => background,
 
-    background: photoFrame.photo,
-    changeBackground: photoFrame.changePhoto,
+    changeBackground: changePhoto,
     reset,
     stick
   });
 
   function reset () {
-    photoFrame.reset();
+    background = null;
     stuckers = [];
+  }
+
+  function changePhoto (photo) {
+    background = photo;
   }
 
   function stick (location, dataURI) {
