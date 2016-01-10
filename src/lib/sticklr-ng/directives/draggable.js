@@ -14,6 +14,6 @@ function link (scope, element, attrs, ctrl) {
       x: ev.layerX,
       y: ev.layerY
     }));
-    ev.dataTransfer.setData('image/png', data);
+    ev.dataTransfer.setData('image/*', data);
   });
 }

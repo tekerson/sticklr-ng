@@ -20,7 +20,7 @@ function handleDrop (scope, callback, ev) {
   if (!raw) { return; }
 
   const offset = JSON.parse(raw);
-  const image = ev.dataTransfer.getData('image/png');
+  const image = ev.dataTransfer.getData('image/*');
 
   const location = {
     x: ev.clientX - offset.x,
