@@ -1,4 +1,4 @@
-export default function StickerAlbum () {
+export default () => {
   let stickers = [];
 
   return ({
@@ -10,4 +10,4 @@ export default function StickerAlbum () {
   function addSticker (sticker) {
     stickers = [...stickers, sticker];
   }
-}
+};

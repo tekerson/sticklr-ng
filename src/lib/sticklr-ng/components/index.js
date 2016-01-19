@@ -1,13 +1,13 @@
 import angular from 'angular';
 
-import Collage from './collage';
-import FileInput from './file-input';
-import MediaList from './media-list';
-import StickerUploadForm from './sticker-upload-form';
+import stkCollage from './collage';
+import stkFileInput from './file-input';
+import stkMediaList from './media-list';
+import stkStickerUploadForm from './sticker-upload-form';
 
 export default angular.module('stkComponents', [])
-  .directive('stkCollage', [Collage])
-  .directive('stkFileInput', ['$sce', FileInput])
-  .directive('stkMediaList', ['$sce', MediaList])
-  .directive('stkStickerUploadForm', [StickerUploadForm])
+  .directive('stkCollage', [stkCollage])
+  .directive('stkFileInput', ['$sce', stkFileInput])
+  .directive('stkMediaList', ['$sce', stkMediaList])
+  .directive('stkStickerUploadForm', [stkStickerUploadForm])
 ;

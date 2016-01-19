@@ -1,6 +1,4 @@
-export default function Sticker ({title, dataURI}) {
-  return ({
-    title,
-    dataURI
-  });
-}
+export default ({title, dataURI}) => ({
+  get title () { return title; },
+  get dataURI () { return dataURI; }
+});

@@ -1,6 +1,6 @@
-import Stucker from './stucker';
+import stucker from './stucker';
 
-export default function Collage () {
+export default () => {
   let stuckers = [];
   let background = null;
 
@@ -8,7 +8,7 @@ export default function Collage () {
     stuckers: () => stuckers,
     background: () => background,
 
-    changeBackground: changePhoto,
+    changeBackground,
     reset,
     stick
   });
@@ -18,12 +18,11 @@ export default function Collage () {
     stuckers = [];
   }
 
-  function changePhoto (photo) {
+  function changeBackground (photo) {
     background = photo;
   }
 
   function stick (location, dataURI) {
-    const stucker = Stucker({location, dataURI});
-    stuckers = [...stuckers, stucker];
+    stuckers = [...stuckers, stucker({location, dataURI})];
   }
-}
+};

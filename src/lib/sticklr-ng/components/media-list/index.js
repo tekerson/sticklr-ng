@@ -17,7 +17,7 @@ export default function ($sce) {
 };
 
 function link ($sce) {
-  return (scope, element, attrs, vm) => {
+  return (scope, element, attrs, ctrl) => {
     const extractTitle = scope.extractTitle;
     const extractThumbSrc = scope.extractThumbSrc;
 

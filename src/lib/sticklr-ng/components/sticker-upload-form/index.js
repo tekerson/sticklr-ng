@@ -11,7 +11,7 @@ export default () => ({
     stickerCreated: '&?onStickerCreated'
   },
 
-  controller: Ctrl,
+  controller: ctrl,
   controllerAs: 'vm',
 
   link,
@@ -24,7 +24,7 @@ function link (scope, element, attrs, ctrl) {
   }
 }
 
-function Ctrl () {
+function ctrl () {
   let isOpen = false;
   let sticker = newSticker();
   let stickerCreated = () => {};
