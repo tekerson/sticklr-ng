@@ -1,6 +1,7 @@
 import test from 'tape';
 
 import mkCollage from './collage';
+import mkStucker from './stucker';
 
 withCollage('There are no initial stickers', (t, c) => {
   t.equal(c.stuckers().length, 0);
@@ -22,12 +23,14 @@ withCollage('Changing the background changes the background', (t, c) => {
 });
 
 withCollage('Sticking a sticker adds a Stucker', (t, c) => {
-  const location = {x: 200, y: 50};
-  const dataURI = 'data:something';
+  const stucker = mkStucker({
+    location: {x: 200, y: 50},
+    dataURI: 'data:something'
+  });
 
-  c.stick(location, dataURI);
+  c.stick(stucker);
 
-  t.equal(c.stuckers().length, 1);
+  t.ok(c.stuckers().includes(stucker));
   t.end();
 });
 

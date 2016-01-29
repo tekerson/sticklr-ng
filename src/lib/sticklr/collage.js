@@ -1,5 +1,3 @@
-import stucker from './stucker';
-
 export default () => {
   let stuckers = [];
   let background = null;
@@ -22,7 +20,7 @@ export default () => {
     background = photo;
   }
 
-  function stick (location, dataURI) {
-    stuckers = [...stuckers, stucker({location, dataURI})];
+  function stick (stucker) {
+    stuckers = [...stuckers, stucker];
   }
 };

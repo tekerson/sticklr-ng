@@ -3,6 +3,7 @@ import angular from 'angular';
 import './app.less';
 
 import 'sticklr-ng';
+import stucker from 'sticklr/stucker';
 
 export default angular.module('App', ['sticklr'])
   .controller('AppCtrl', ['stkCollage', 'stkStickerAlbum', 'eventEmitter', Ctrl])
@@ -20,7 +21,9 @@ function Ctrl (collage, album, events) {
     error: events.emit.bind(null, 'ERROR'),
 
     addSticker: album.addSticker,
-    stick: collage.stick
+    stick: (location, dataURI) => {
+      collage.stick(stucker({location, dataURI}));
+    }
   });
 }
 
